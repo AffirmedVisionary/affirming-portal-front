@@ -1,21 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import './App.css';
-import {Loading, Complete, ClickMe} from "./components"
+import { Loading, Complete, ClickMe, Bio, Header } from "./components"
 import abi from "./utils/affirmingPortal.json";
 
 const DisplayCount = (totalCount) => {
-  if (totalCount > 0) {
-    return <h3>Join the other {totalCount} visionaries!</h3>
-  }
+  return <h3>{totalCount}</h3>
 }
 
-const ButtonContent = ({miningInProgress, affirmCompleted, totalCount}) => {
-  if(totalCount && !miningInProgress && !affirmCompleted) {
-    return (
-      <div className="buttonText">{totalCount}</div>
-    )
-  }
+const ButtonContent = ({ miningInProgress, affirmCompleted, totalCount }) => {
+
   if (miningInProgress) {
     return (
       <>
@@ -29,15 +23,15 @@ const ButtonContent = ({miningInProgress, affirmCompleted, totalCount}) => {
     return (
       <>
         <Complete />
-        <div className="buttonText">You just submitted Affirmation # {totalCount} Your future self thanks you!</div>
+        <div className="buttonText">You just submitted Affirmation #{totalCount} Your future self thanks you!</div>
       </>
     )
   }
-  
+
   return (
     <>
       <ClickMe />
-      <div className="buttonText">Holler at me!</div>
+      <div className="buttonText">Affirm Your Vision!</div>
     </>
   )
 }
@@ -45,7 +39,7 @@ const ButtonContent = ({miningInProgress, affirmCompleted, totalCount}) => {
 export default function App() {
 
   const [currentAccount, setCurrentAccount] = useState("");
-  const [totalCount, setTotalCount] = useState(null)
+  const [totalCount, setTotalCount] = useState(0)
   const [miningInProgress, setMiningInProgress] = useState(false);
   const [affirmCompleted, setAffirmCompleted] = useState(false);
 
@@ -113,9 +107,13 @@ export default function App() {
         const signer = provider.getSigner();
         const affirmPortalContract = new ethers.Contract(contractAddress, contractABI, signer);
 
-        let count = await affirmPortalContract.getTotalAffirmed();
-        console.log("Retrieved total affirmation count...", count.toNumber());
-        setTotalCount(count.toNumber())
+        const getTotalCount = async () => {
+          const count = await affirmPortalContract.getTotalAffirmed();
+          console.log("Retrieved total affirmation count...", count.toNumber());
+          setTotalCount(count.toNumber());
+        }
+
+        getTotalCount();
 
         // time to affirm
         const affirmIt = await affirmPortalContract.affirm();
@@ -123,13 +121,15 @@ export default function App() {
         setMiningInProgress(true);
 
         await affirmIt.wait();
-        console.log("Mined -- ", affirmIt.hash)
+        console.log("Mined -- ", affirmIt.hash);
         setMiningInProgress(false);
 
-        count = await affirmPortalContract.getTotalAffirmed();
-        console.log("Retrieved total affirmation count...", count.toNumber());
-        setTotalCount(count.toNumber());
+        getTotalCount();
         setAffirmCompleted(true);
+
+        useEffect(() => {
+          getTotalCount();
+        }, [])
 
       } else {
         console.log("Ethereum object doesn't exist!");
@@ -139,36 +139,30 @@ export default function App() {
     }
   }
 
-
   // run on page load
   useEffect(() => {
     isWalletConnected();
-    
   }, [])
 
   return (
     <div className="mainContainer">
 
       <div className="dataContainer">
-        <div className="header">
-          👋 Hey Visionary!
-        </div>
+        <Header />
 
-        <div className="bio">
-          I am The Affirmed Visionary, a graphic designer turned Software Engineer with 4 beautiful kiddies and a love for affirmations and all things emotional intelligence? Connect your Ethereum wallet and affirm your vision!
-        </div>
+        <Bio />
 
-        {DisplayCount}
-        {currentAccount && <button className="affirmButton" onClick={affirm} disabled={miningInProgress}>
+        {currentAccount ? <div className="bio">Click below to affirm your vision! {totalCount}</div> :
+          <div className="bio">Connect your Ethereum wallet and affirm your vision! {totalCount}</div>}
+
+        {currentAccount ? <button className="affirmButton" onClick={affirm} disabled={miningInProgress}>
           <div className="buttonContent">
-            {ButtonContent({miningInProgress, affirmCompleted, totalCount})}
-          </div> 
-        </button>}
-        {!currentAccount && (
+            {ButtonContent({ miningInProgress, affirmCompleted, totalCount })}
+          </div>
+        </button> :
           <button className="affirmButton" onClick={connectWallet}>
             Connect Wallet
-          </button>
-        )}
+          </button>}
       </div>
     </div>
   );
