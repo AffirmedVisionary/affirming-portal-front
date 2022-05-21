@@ -1,0 +1,61 @@
+/* CSS from https://loading.io/css/ */
+
+.lds-heart-container {
+  width: 30px;
+  height: 30px;
+}
+
+.lds-heart {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  transform-origin: 10px 10px;
+}
+.lds-heart div {
+  top: 10px;
+  left: 10px;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #e90c59;
+  animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.lds-heart div:after,
+.lds-heart div:before {
+  content: " ";
+  position: absolute;
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: #e90c59;
+}
+.lds-heart div:before {
+  left: -7px;
+  border-radius: 50% 0 0 50%;
+}
+.lds-heart div:after {
+  top: -7px;
+  border-radius: 50% 50% 0 0;
+}
+@keyframes lds-heart {
+  0% {
+    transform: scale(0.95);
+  }
+  5% {
+    transform: scale(1.1);
+  }
+  39% {
+    transform: scale(0.85);
+  }
+  45% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
