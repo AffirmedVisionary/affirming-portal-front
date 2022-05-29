@@ -11,14 +11,14 @@ const ReactionEmojis = {
 	[Reaction.Hype]: "👋",
 };
 
-export default function Affirm({ _reaction, message, waver, timestamp }) {
+export default function Affirm({ reaction, message, waver, timestamp }) {
 	return (
 		<div className="affirm">
 			<div className="reaction">{ReactionEmojis[reaction]}</div>
 			<div className="body">
 				<dl>
 					<dt>From:</dt>
-					<dd>{affirmer}</dd>
+					<dd>{waver}</dd>
 					<dt>Time:</dt>
 					<dd>
 						{formatDate(timestamp)} at {formatTime(timestamp)}

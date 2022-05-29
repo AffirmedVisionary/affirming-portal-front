@@ -1,17 +1,5 @@
 import React from "react";
 
-
-
-
-
-// import {
-// AffirmList, 
-// Bio
-// Header, 
-// SendAffirmation, 
-// Wallet
-// } from "./components";
-
 import { Bio, Header, SendAffirmation, AffirmList, Wallet } from './components/index'
 
 // import { Bio2 } from './components/Bio2'
@@ -32,7 +20,7 @@ export default function App() {
     connectWallet,
     loading,
     writeLoading,
-    affirmList,
+    affirmationList,
     totalCount,
     sendAffirmation,
     sendQuote,
@@ -64,7 +52,7 @@ export default function App() {
             sendQuote={sendQuote}
             sendHype={sendHype}
           />
-          <AffirmList affirmList={affirmList} />
+          <AffirmList affirmList={affirmationList} />
         </div>
       </div>
     </>

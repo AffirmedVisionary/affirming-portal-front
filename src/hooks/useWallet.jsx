@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 import affirmingPortalAbi from '../utils/affirmingPortal.json';
 import useWindowFocus from './useWindowFocus';
 
-const RINKEBY_CONTRACT_ADDRESS = "0xfeA9Ceb2D86b9847DC48067503F3523CdEe32550";
+const RINKEBY_CONTRACT_ADDRESS = "0x0b01Bc198a3E65541d5C808ab1EeD4e2070cBf4F";
 
 export const Reaction = {
   Affirm: 0,
@@ -230,7 +230,7 @@ async function getAllAffirmations() {
   const normalizeAffirmations = (affirm) => ({
     reaction: affirm.reaction,
     message: affirm.message,
-    affirmer: affirm.affirmer,
+    waver: affirm.waver,
     timestamp: new Date(affirm.timestamp * 1000),
   });
 
@@ -249,7 +249,7 @@ function subscribeToAffirmationEvents(callback) {
     provider,
   );
 
-  affirmingPortalContract.on("NewAffirmation", (reaction, message, affirmer, timestamp) => {
-    callback({ reaction, message, affirmer, timestamp });
+  affirmingPortalContract.on("NewAffirmation", (reaction, message, waver, timestamp) => {
+    callback({ reaction, message, waver, timestamp });
   });
 }

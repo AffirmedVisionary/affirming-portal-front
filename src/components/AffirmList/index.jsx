@@ -6,6 +6,7 @@ import "./AffirmList.css";
 
 export default function AffirmList({ affirmList }) {
 	if (!affirmList) {
+    console.log("Affirmed List")
 		return null;
 	}
 
@@ -14,9 +15,9 @@ export default function AffirmList({ affirmList }) {
 			{affirmList.map((affirm) => (
 				<Affirm
 					key={affirm.timestamp}
-					reaction={affirm._reaction}
+					reaction={affirm.reaction}
 					message={affirm.message}
-					affirmr={affirm.affirmr}
+					waver={affirm.waver}
 					timestamp={affirm.timestamp}
 				/>
 			))}

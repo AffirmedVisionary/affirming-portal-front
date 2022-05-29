@@ -28,6 +28,8 @@ export default function SendAffirmation({
 		writeLoading ||
 		message.length === 0;
 
+  console.log(message)
+
 	useEffect(() => {
 		if (writeLoading === WriteStatus.None) {
 			setMessage("");
