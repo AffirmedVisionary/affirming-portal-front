@@ -1,7 +1,7 @@
 // Markup from https://loading.io/css/
 
 import React from "react";
-import './Loading.css'
+import './Loading.css';
 
 export default function Loading() {
   return (

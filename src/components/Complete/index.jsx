@@ -2,7 +2,7 @@
 // Markup from https://loading.io/css/
 
 import React from "react";
-import './Complete.css'
+import './Complete.css';
 
 export default function Complete() {
   return (

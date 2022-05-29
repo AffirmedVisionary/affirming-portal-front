@@ -1,7 +1,7 @@
 // Markup from https://loading.io/css/
 
 import React from "react";
-import './ClickMe.css'
+import './ClickMe.css';
 
 export default function ClickMe() {
   return (

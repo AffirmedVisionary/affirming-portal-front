@@ -1,9 +1,12 @@
-import React from 'React';
+import React from 'react';
+import './Header.css';
 
-export default Bio = () => {
+const Header = () => {
   return (
     <div className="header">
       👋 Hey Visionary!
         </div>
-  )
-}
+  );
+};
+
+export default Header;

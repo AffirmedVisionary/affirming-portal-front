@@ -1,27 +1,32 @@
-.mainContainer {
+body,html {
+  height:100vh;
+  overflow:hidden;
+    color: #fff
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background: #333;
   display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 64px;
+  color: #fff
+}
+
+.mainContainer {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin-top: 20px;
 }
 
 .dataContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 600px;
-}
-
-.header {
-  text-align: center;
-  font-size: 32px;
-  font-weight: 600;
-}
-
-.bio {
-  text-align: center;
-  color: gray;
-  margin-top: 16px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 50%;
+	max-width: 600px;
+	margin: 0 20px;
 }
 
 .affirmButton {
@@ -36,4 +41,71 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.buttonGroup {
+	margin: 10px 0;
+	min-height: 46px;
+	display: flex;
+	gap: 15px;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.justifyCenter {
+	justify-content: center;
+	text-align: center;
+}
+
+.fading {
+	animation: fadein 1s;
+}
+
+.disabled {
+	opacity: 0.8;
+	filter: grayscale(0.1);
+	cursor: not-allowed;
+}
+
+.disabled * {
+	pointer-events: none;
+}
+
+.button {
+	cursor: pointer;
+	padding: 8px 16px;
+	border: 0;
+	border-radius: 5px;
+	font-size: 1rem;
+	background-color: #444;
+	color: #fff;
+	text-decoration: none;
+}
+
+.button:hover {
+	-webkit-filter: brightness(80%);
+}
+
+.button:active {
+	transform: translate(1px, 1px);
+}
+
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.mainContainer {
+		margin-top: 64px;
+	}
+
+	.buttonGroup {
+		flex-direction: row;
+	}
 }
