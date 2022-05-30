@@ -10,6 +10,7 @@ export default function Wallet({
   networkName,
   isRinkeby,
   connectWallet,
+  totalCount
 }) {
   if (loading) {
     return <div className="buttonGroup">
@@ -55,6 +56,7 @@ export default function Wallet({
               )}
             >
               Network: <span className="networkName">{networkName}</span>
+            <span>{totalCount}</span>
             </span>
             {!isRinkeby && (
               <span className="network networkInvalid">
@@ -64,6 +66,11 @@ export default function Wallet({
           </div>
       )}
 
+      <div className="button status count disabled">
+        <div className="statusColor">👤</div>
+        <span>{totalCount}</span>
+      </div>
+      
     </div>
   );
 }

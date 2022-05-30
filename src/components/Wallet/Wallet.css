@@ -19,6 +19,13 @@
 
 .status {
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.count {
+  color: #D4B483;
+  width: 2rem;
 }
 
 .statusColor {

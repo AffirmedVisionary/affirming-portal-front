@@ -32,6 +32,7 @@ export default function App() {
       <div className="mainContainer">
         <div className="dataContainer">
           <Wallet
+            totalCount={totalCount}
             loading={loading}
             walletInstalled={walletInstalled}
             walletConnected={walletConnected}

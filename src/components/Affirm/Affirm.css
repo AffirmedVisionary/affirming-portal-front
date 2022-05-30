@@ -1,21 +1,24 @@
-.affirm {
-	position: relative;
+.omeMess {
+  position: relative;
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
-	padding: 15px 10px;
-	justify-content: flex-start;
-	background-color: rgba(55, 65, 81, 0.8);
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
+  justify-content: flex-start;
 }
 
-.reaction {
-	position: absolute;
-	top: 50px;
-	right: 10px;
-	padding: 0 10px;
-	font-size: 1.5rem;
+.oneMess:nth-child(even) .affirm {
+  background-color: #508991;
+  color: #fff;
+}
+
+.affirm {
+	padding: 15px 10px;
+	background-color: #D4B483;
+	border-radius: 10px;
+  color: #333
+}
+
+.marginRigtOne {
+    margin-right: 1rem;
 }
 
 .body {
@@ -25,18 +28,25 @@
 	gap: 10px;
 }
 
-.body dl {
-	display: flex;
-	flex-direction: column;
+.informDetails {
+  
+  margin-top: 0.5rem;
 }
 
-.body dt {
+.informDetails dl {
+	display: flex;
+	flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.informDetails dt {
 	color: #6ee7b7;
 	font-weight: 500;
 	font-size: 0.9rem;
 }
 
-.body dd {
+.informDetails dd {
 	font-size: 0.85rem;
 	max-width: calc(100vw - 40px);
 	white-space: nowrap;
@@ -50,9 +60,14 @@ dd {
 	margin: 0;
 }
 
-.message {
-	margin-top: 10px;
+.message-block {
+  display: flex;
+  align-items: center;
 }
+
+/* .message {
+	margin-top: 10px;
+} */
 
 @media screen and (min-width: 768px) {
 	.wave {

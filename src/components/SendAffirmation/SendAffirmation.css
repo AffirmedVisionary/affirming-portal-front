@@ -15,12 +15,15 @@
 	height: 80px;
 	border: none;
 	border-radius: 5px;
+  background-color: #c1666B;
+  color: #fff;
 	font-family: inherit;
 	font-size: 1rem;
 }
 
-.buttonEmoji {
-  margin-right: 8px;
+.buttonText {
+  color: #D4B483;
+  margin-top: 0.5rem;
 }
 
 .buttonFlex {

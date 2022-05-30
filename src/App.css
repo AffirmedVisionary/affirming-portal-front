@@ -1,16 +1,17 @@
 body,html {
   height:100vh;
   overflow:hidden;
-    color: #fff
+    color: #D4B483
 }
 
 body {
   width: 100vw;
   height: 100vh;
   position: absolute;
+  justify-content: center;
   background: #333;
   display: flex;
-  color: #fff
+  color: #D4B483
 }
 
 .mainContainer {
@@ -24,7 +25,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	width: 50%;
+	width: 90%;
 	max-width: 600px;
 	margin: 0 20px;
 }
@@ -35,6 +36,17 @@ body {
   padding: 8px;
   border: 0;
   border-radius: 5px;
+}
+
+.reaction {
+	top: 50px;
+	right: 10px;
+  border-radius: 50%;
+  background-color: antiquewhite;
+  height: 3rem;
+  width: 3rem;
+  text-align: center;
+  display: inline-block;
 }
 
 .buttonContent {
@@ -79,7 +91,6 @@ body {
 	border-radius: 5px;
 	font-size: 1rem;
 	background-color: #444;
-	color: #fff;
 	text-decoration: none;
 }
 

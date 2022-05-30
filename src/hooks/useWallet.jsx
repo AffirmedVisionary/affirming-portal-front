@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 import affirmingPortalAbi from '../utils/affirmingPortal.json';
 import useWindowFocus from './useWindowFocus';
 
-const RINKEBY_CONTRACT_ADDRESS = "0x0b01Bc198a3E65541d5C808ab1EeD4e2070cBf4F";
+const RINKEBY_CONTRACT_ADDRESS = "0xe7D0249B928061B0F545849d5981B4D9Fb804D74";
 
 export const Reaction = {
   Affirm: 0,
@@ -211,6 +211,7 @@ function writeAffirmation(reaction, message) {
 
 async function getAllAffirmations() {
   if (!window.ethereum) {
+    console.log("Ethereum object doesn't exist!");
     return;
   }
 

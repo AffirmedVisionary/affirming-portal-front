@@ -25,7 +25,7 @@ export default function AffirmStatus({ loading, writeLoading, totalCount }) {
 	}
 
 	return (
-		<div className="affirmStatus fading">
+		<div className="affirmStatus fading justifyCenter">
       {totalCount} {totalCount === 1 ? `visionary` : `visionaries`} have Affirmed their Vision!
 		</div>
 	);
